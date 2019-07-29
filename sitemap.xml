@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-     <loc>https://www.mkdocs.org/</loc>
+     <loc>https://lampking.github.io/</loc>
      <lastmod>2019-07-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://www.mkdocs.org/Mysql/changePasswd/</loc>
+     <loc>https://lampking.github.io/Mysql/changePasswd/</loc>
      <lastmod>2019-07-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://www.mkdocs.org/Service/NginxPhpMake/</loc>
+     <loc>https://lampking.github.io/Service/NginxPhpMake/</loc>
      <lastmod>2019-07-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://www.mkdocs.org/Service/redis/</loc>
+     <loc>https://lampking.github.io/Service/redis/</loc>
      <lastmod>2019-07-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://www.mkdocs.org/Service/Lvm/</loc>
+     <loc>https://lampking.github.io/Service/Lvm/</loc>
      <lastmod>2019-07-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -31,7 +31,7 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://www.mkdocs.org/Git/</loc>
+     <loc>https://lampking.github.io/Git/</loc>
      <lastmod>2019-07-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
