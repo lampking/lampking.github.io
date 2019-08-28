@@ -394,6 +394,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#php-fpm" title="添加PHP-FPM服务脚本" class="md-nav__link">
+    添加PHP-FPM服务脚本
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx_1" title="添加NGINX服务脚本" class="md-nav__link">
+    添加NGINX服务脚本
+  </a>
+  
+</li>
+      
       
       
       
@@ -532,6 +546,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#php-fpm" title="添加PHP-FPM服务脚本" class="md-nav__link">
+    添加PHP-FPM服务脚本
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx_1" title="添加NGINX服务脚本" class="md-nav__link">
+    添加NGINX服务脚本
+  </a>
+  
+</li>
+      
       
       
       
@@ -567,6 +595,45 @@ yum install -y libxml2-devel bzip2-devel curl-devel enchant-devel gmp-devel icu 
 
 <h3 id="_4">配置命令</h3>
 <pre><code class="shell">./configure --prefix=/opt/php --with-config-file-path=/opt/php/etc --enable-fpm --with-bz2 --enable-calendar --with-pcre-regex --enable-mysqlnd --with-fpm-user=daemon --with-fpm-group=daemon --with-enchant --enable-phpdbg --with-mysqli --with-pdo-mysql --with-iconv --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir --enable-xml --with-libedit --enable-simplexml --disable-rpath --enable-bcmath --enable-shmop --with-gmp --enable-inline-optimization --enable-mbregex --enable-mbstring --with-mcrypt --enable-ftp --with-readline --enable-sysvmsg --enable-sysvsem --enable-sysvshm --with-gd --enable-intl --enable-gd-native-ttf --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --with-pear --enable-soap --enable-wddx --without-pear --with-gettext --enable-fileinfo --enable-maintainer-zts --with-pcre-dir --enable-exif --with-openssl --with-curl --enable-static=yes
+</code></pre>
+
+<h2 id="php-fpm">添加PHP-FPM服务脚本</h2>
+<pre><code># touch /usr/lib/systemd/system/php-fpm.service
+# vim /usr/lib/systemd/system/php-fpm.service
+</code></pre>
+
+<pre><code>[Unit]
+Description=The PHP FastCGI Process Manager
+After=syslog.target network.target
+
+[Service]
+Type=simple
+PIDFILE=/opt/php/var/run/php-fpm.pid
+ExecStart=/opt/php/sbin/php-fpm --nodaemonize --fpm-config /opt/php/etc/php-fpm.conf
+ExecRestart=/bin/kill -USR2 $PIDFILE
+ExecStop=/bin/kill -SIGINT $PIDFILE
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<h2 id="nginx_1">添加NGINX服务脚本</h2>
+<pre><code># touch /usr/lib/systemd/system/nginx.service
+# vim /usr/lib/systemd/system/nginx.service
+</code></pre>
+
+<pre><code>[Unit]
+Description=nginx
+After=network.target
+[Service]
+Type=forking
+PIDFile=/opt/nginx/logs/nginx.pid
+ExecStart=/opt/nginx/sbin/nginx
+ExecReload=/opt/nginx/logs/sbin/nginx -s reload
+ExecStop=/opt/nginx/logs/sbin/nginx -s stop
+PrivateTmp=true
+[Install]
+WantedBy=multi-user.target
 </code></pre>
                 
                   

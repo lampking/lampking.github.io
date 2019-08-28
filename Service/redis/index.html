@@ -353,6 +353,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" title="添加服务脚本" class="md-nav__link">
+    添加服务脚本
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#phpini" title="php.ini 的配置" class="md-nav__link">
     php.ini 的配置
   </a>
@@ -432,6 +439,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" title="添加服务脚本" class="md-nav__link">
+    添加服务脚本
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#phpini" title="php.ini 的配置" class="md-nav__link">
     php.ini 的配置
   </a>
@@ -464,6 +478,24 @@ Please select the redis log file name [/var/log/redis_6379.log] /opt/redis/log/r
 Please select the data directory for this instance [/var/lib/redis/6379] /opt/redis/lib/data
 Please select the redis executable path [] /opt/redis/bin/redis-server
 Mmmmm...  it seems like you don't have a redis executable. Did you run make install yet?
+</code></pre>
+
+<h2 id="_1">添加服务脚本</h2>
+<pre><code># touch /usr/lib/systemd/system/redis.service
+# vim /usr/lib/systemd/system/redis.service
+</code></pre>
+
+<pre><code>[Unit]
+Description=Redis
+After=network.target
+[Service]
+PORT=6379
+PIDFILE=/opt/redis/run/redis.pid
+ExecRestart=/bin/kill -USR2 $PIDFILE
+ExecStart=/opt/redis/bin/redis-server /opt/redis/etc/redis.conf --daemonize no
+ExecStop=/opt/redis/bin/redis-cli -a '123.com' -p $PORT shutdown
+[Install]
+WantedBy=multi-user.target
 </code></pre>
 
 <blockquote>
